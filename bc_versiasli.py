@@ -9,6 +9,7 @@ class Category:
         category_title=self.name.center(30,"*")
         self.output.append(category_title)
         for i in range (0,len(self.ledger)):
+            #print((self.ledger[i]["description"]))
             l=str((self.ledger[i]["description"])[:23])
             m=(" "*(23-len(self.ledger[i]["description"])))
             r=(str(('%.2f' % self.ledger[i]["amount"])).rjust(7))
@@ -23,7 +24,7 @@ class Category:
     def check_funds(self,amount):
         funds=0
         for i in range (0,len(self.ledger)):
-            funds=funds+self.ledger[i][1]
+            funds=funds+self.ledger[i]["amount"]
         if funds > amount:       
             return True 
         else:
@@ -38,7 +39,7 @@ class Category:
         description=""
         #self.ledger.append([description,amount])
       self.ledger.append({"amount":amount,"description":description})
-      print(self.ledger)
+      #print(self.ledger)
       
     def withdraw(self,*withdraw):
         withdrawn_amount=withdraw[0]
@@ -49,7 +50,8 @@ class Category:
                 description=withdraw[1]
             else:
                 description=""
-            self.ledger.append([description,amount])
+            #self.ledger.append([description,amount])
+            self.ledger.append({"amount":amount,"description":description})
             return True
         else:
             print("insufficient funds")

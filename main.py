@@ -3,7 +3,7 @@ from bc_versiasli import create_spend_chart
 
 food = bc_versiasli.Category("Food")
 food.deposit(1000, "initial deposit")
-#food.withdraw(10.15, "groceries")
+food.withdraw(10.15, "groceries")
 #food.withdraw(15.89, "restaurant and more food for dessert")
 #print(food.get_balance())
 #clothing = bc_versiasli.Category("Clothing")
