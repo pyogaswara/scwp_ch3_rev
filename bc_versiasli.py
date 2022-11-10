@@ -67,10 +67,12 @@ class Category:
         if self.check_funds(amount):
             amount=(-1)*amount
             description=f'Transfer to {category.name}'
-            self.ledger.append([description,amount])
+            #self.ledger.append([description,amount])
+            self.ledger.append({"amount":amount,"description":description})
             destination_description=f'Transfer from {self.name}'
             destination_amount=amount*(-1)
-            category.ledger.append([destination_description,destination_amount])
+            #category.ledger.append([destination_description,destination_amount])
+            category.ledger.append({"amount":destination_amount,"description":destination_description})
             return True
         else:
             print("insufficient funds")
