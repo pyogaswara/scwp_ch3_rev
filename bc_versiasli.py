@@ -58,7 +58,7 @@ class Category:
     def get_balance(self):
         self.balance=0
         for i in range (0,len(self.ledger)):
-            self.balance=self.balance+self.ledger[i][1]
+            self.balance=self.balance+self.ledger[i]["amount"]
         return self.balance
 
     def transfer(self,amount,category):
