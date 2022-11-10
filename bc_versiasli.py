@@ -118,7 +118,7 @@ def create_spend_chart(charts):
         category_name=charts[i].name
         spending_category[i]=[]
         for j in range(0,(len(charts[i].ledger))):
-            spend=(charts[i].ledger[j][1])
+            spend=(charts[i].ledger[j]["amount"])
             if spend < 0:                 
                 spending_category[i].append(spend)
         total_spend_percategory=(sum(spending_category[i]))
