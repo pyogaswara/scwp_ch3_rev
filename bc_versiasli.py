@@ -9,9 +9,9 @@ class Category:
         category_title=self.name.center(30,"*")
         self.output.append(category_title)
         for i in range (0,len(self.ledger)):
-            l=str((self.ledger[i][0])[:23])
-            m=(" "*(23-len(self.ledger[i][0])))
-            r=(str(('%.2f' % self.ledger[i][1])).rjust(7))
+            l=str((self.ledger[i]["description"])[:23])
+            m=(" "*(23-len(self.ledger[i]["description"])))
+            r=(str(('%.2f' % self.ledger[i]["amount"])).rjust(7))
             c=f'{l}{m}{r}'
             self.output.append(c)
         total=self.get_balance()
@@ -30,13 +30,16 @@ class Category:
             return False
         
     def deposit(self,*deposit):
-        len_deposit=len(deposit)
-        amount=deposit[0]
-        if len_deposit==2:
-            description=deposit[1]
-        else:
-            description=""
-        self.ledger.append([description,amount])
+      len_deposit=len(deposit)
+      amount=deposit[0]
+      if len_deposit==2:
+        description=deposit[1]
+      else:
+        description=""
+        #self.ledger.append([description,amount])
+      self.ledger.append({"amount":amount,"description":description})
+      print(self.ledger)
+      
     def withdraw(self,*withdraw):
         withdrawn_amount=withdraw[0]
         len_withdraw=len(withdraw)
